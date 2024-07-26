@@ -9,14 +9,12 @@ struct Pair findMinMax(int arr[], int low, int high) {
     struct Pair minmax, left, right;
     int mid;
 
-    // If there is only one element
     if (low == high) {
         minmax.min = arr[low];
         minmax.max = arr[low];
         return minmax;
     }
 
-    // If there are two elements
     if (high == low + 1) {
         if (arr[low] > arr[high]) {
             minmax.max = arr[low];
@@ -28,18 +26,15 @@ struct Pair findMinMax(int arr[], int low, int high) {
         return minmax;
     }
 
-    // If there are more than two elements
     mid = (low + high) / 2;
     left = findMinMax(arr, low, mid);
     right = findMinMax(arr, mid + 1, high);
 
-    // Compare minimums of two parts
     if (left.min < right.min)
         minmax.min = left.min;
     else
         minmax.min = right.min;
 
-    // Compare maximums of two parts
     if (left.max > right.max)
         minmax.max = left.max;
     else
