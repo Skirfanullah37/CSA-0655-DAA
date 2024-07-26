@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+int binarySearch(int array[], int size, int key) {
+    int low = 0, high = size - 1, mid;
+
+    while (low <= high) {
+        mid = (low + high) / 2;
+
+        if (array[mid] == key) {
+            return mid; 
+        } else if (array[mid] < key) {
+            low = mid + 1; 
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+int main() {
+    int array[MAX_SIZE], size, key, position;
+	printf("D.madhavan-192225070\n");
+    printf("Enter size of array: ");
+    scanf("%d", &size);
+
+    printf("Enter elements of the array in sorted order:\n");
+    for (int i = 0; i < size; ++i) {
+        scanf("%d", &array[i]);
+    }
+
+    printf("Enter key to search: ");
+    scanf("%d", &key);
+
+    position = binarySearch(array, size, key);
+
+    if (position != -1) {
+        printf("%d found at index %d.\n", key, position);
+    } else {
+        printf("%d not found in the array.\n", key);
+    }
+
+    return 0;
+}
